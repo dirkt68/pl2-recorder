@@ -36,7 +36,10 @@ class Signal:
 		while True:
 			try:
 				# attempt to create new bin
-				newBin = completeSignal[offset:(offset + Signal.WINDOW_TIMING)]
+				if offset == 0:
+					newBin = completeSignal[offset:(offset + Signal.WINDOW_TIMING + 441)]
+				else:
+					newBin = completeSignal[offset - 441:(offset + Signal.WINDOW_TIMING + 441)]
 			except IndexError:
 				# break loop at the end of list
 				break
@@ -52,8 +55,6 @@ class Signal:
 
 			# take fft of bin
 			binList = Signal._fft(newBin)
-			# perform HPS algorithm
-			# binList = Signal._hps(binList)
 			# only need first half, second half is complex conjugates
 			binList = binList[:len(binList) // 2]
 			# take absolute values
@@ -116,33 +117,6 @@ class Signal:
 
 
 	@staticmethod
-	def _hps(signal):
-		# perform Harmonic Product Spectrum Algorithm to filter current window
-		compSignalTwo = Signal._decimate(signal, 2)
-		compSignalThree = Signal._decimate(signal, 3)
-
-		newList = []
-
-		for i in range(len(signal)):
-			newList.append(signal[i] * compSignalTwo[i] * compSignalThree[i])
-
-		return newList
-
-
-	@staticmethod
-	def _decimate(signalList, D):
-		newList = []
-
-		for i in range(len(signalList)):
-			if i % D == 0:
-				newList.append(signalList[i])
-			else:
-				newList.append(0)
-
-		return list(newList)
-
-
-	@staticmethod
 	def _calcNextPowerOf2(length):
 		# decrement by one in case of already power of 2
 		length -= 1
@@ -185,7 +159,7 @@ class Signal:
 		# ignore next 4 bytes (denotes if WAVE file, will always be)
 		_ = wavefile.read(4)
 
-		# read file until end of file, plus 8 becayse we read the first 8 bytes already
+		# read file until end of file, plus 8 because we read the first 8 bytes already
 		while wavefile.tell() < lengthOfFile + 8:
 			# find parent of the current block
 			parent = wavefile.read(4)

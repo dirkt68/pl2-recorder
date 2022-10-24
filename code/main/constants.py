@@ -1,5 +1,6 @@
 # all possible frequencies that would be from a song
-freq_to_notes = {16.35: 'C0', 
+freq_to_notes = {0:'0',
+                 16.35: 'C0', 
                  17.32: 'C#0', 
                  18.35: 'D0', 
                  19.45: 'D#0', 
@@ -109,7 +110,8 @@ freq_to_notes = {16.35: 'C0',
                  7902.13: 'B8'}
 
 
-usable_notes =      ["C5",    
+usable_notes =      ["0",
+                     "C5",    
                      "C#5",   
                      "D5",    
                      "D#5",    

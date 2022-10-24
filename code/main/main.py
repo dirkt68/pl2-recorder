@@ -1,6 +1,7 @@
 # PYTHON LIBRARIES
 import subprocess
 import time
+import librosa
 
 # USER LIBRARIES
 from signalProcessing import Signal
@@ -8,7 +9,7 @@ from constants import freq_to_notes, usable_notes
 
 # CONSTANTS
 # filenames and executable
-filename = "Timing Test 1.mp3"
+filename = "songs\Hot Cross Buns Test.mp3"
 exe = "ffmpeg.exe"
 
 # bandpass filtering constants
@@ -55,9 +56,9 @@ def main():
 
     # get frequency list from song
     freqList, timeSpent = Signal.freq_from_song(output.stdout, DEBUG)
-    if DEBUG: 
-        print(freqList)
-        print(f"Time spent: {timeSpent} seconds\n")
+    # if DEBUG: 
+    #     print(freqList)
+    #     print(f"Time spent: {timeSpent} seconds\n")
 
     # start loop
     while True:
@@ -86,23 +87,19 @@ def main():
         unmodFreq = tempFreqList[0]
 
         # throw away unnecessary frequencies
-        if unmodFreq < LOW_FILTER or unmodFreq > HIGH_FILTER:
+        if (unmodFreq < LOW_FILTER or unmodFreq > HIGH_FILTER) and unmodFreq != 0:
             continue
 
         # find note from frequency
-        # * one day optimize?
         foundNote = None
         for key in freq_to_notes:
-            # find +- 10 percent of range
+            # find +-5 percent of range
             keyUpper = key * 1.05
             keyLower = key * 0.95
 
             # if the frequency within the range, use that number
             if unmodFreq >= keyLower and unmodFreq <= keyUpper:
                 foundNote = freq_to_notes[key]
-            
-        if foundNote == None:
-            foundNote = freq_to_notes[7902.13]
 
         trueNote = findUsableNote(foundNote)
         print(trueNote)
