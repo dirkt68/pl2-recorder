@@ -7,9 +7,10 @@
 \usepackage{indentfirst}
 \usepackage{hyperref}
 \usepackage{amsmath}
+\usepackage{csvsimple}
 \usepackage[T1]{fontenc}
 \usepackage[nottoc,notlot,notlof]{tocbibind}
-\usepackage[style=ieee,sorting=anyt, backend=biber]{biblatex}
+\usepackage[style=ieee,sorting=none,backend=biber]{biblatex}
 
 % DOCUMENT SETTINGS
 % PAPER SETTINGS
@@ -150,7 +151,103 @@
     After these steps are completed the Fast Fourier Transform of the current list is complete.
 
 \subsubsection{FFT Post-Processing}
-    Once the waveform is converted from a time domain signal into a frequency domain signal, further work must be done to transform the current values into usable frequencies. To do this, the highest magnitudes of the bins of values must be calculated. To do this, simply take the real and imaginary 
+    Once the waveform is converted from a time domain signal into a frequency domain signal, further work must be done to transform the current values into usable frequencies. To do this, the highest magnitudes of the bins of values must be calculated. First, the second half of the signal is discarded, as the second half if just the complex conjugate of the first half \cite{fft_wiki}. Then, the absolute value at each point is taken, as this is a real signal, the imaginary and negative components are irrelevant. Finally, the actual magnitude is calculated. To do this, loop through the remainder of the list, and at each even and odd point treat the even as the real component and the odd as the imaginary, then combine them using the following formula:
+    \begin{equation}
+        Magnitude = \sqrt{Re^2 + Im^2}
+    \end{equation}
+    These magnitudes are then inserted into their own list, where the largest value corresponds to the highest peak in the frequency spectrum, which is almost always the frequency at that point in time. An example of the peaks is shown below in Figure \ref{peaks}.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.75\textwidth]{fft_peaks.png}
+        \caption{Example of the FFT Output}
+        \label{peaks}
+    \end{figure}
+    To find the actual frequency associated with the peak, the equation as shown below can be used:
+    \begin{equation}
+        Frequency = \frac{(index\;of\;largest\;peak) * (sample\;rate)}{(length\;of\;bin)}  
+    \end{equation}
+    
+    To actually play a song, the frequencies are placed into a list, where repeated frequencies are counted and divided by 10 to calculate the time required to play that note. To find the note, a $\pm$5 percent range is calculated around the frequency, which is used as a key for a dictionary with the frequencies to notes built in.
+
+    Once those notes are found, those notes are rounded up and down into the actual playable notes on the recorder. This is done by comparing the note to a list of notes which the reorder can physically play.
+
+\subsection{Hardware}
+\subsubsection{The Recorder}
+    As the main goal of the project is to play a recorder automatically, the most important facet of the hardware is the recorder itself. The YRS-24B is the instrument used. This recorder is fairly standard, and is tuned in C. Figure \ref{rec} depicts the recorder.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.75\textwidth]{recorder.png}
+        \caption{The Yamaha YRS-24B Recorder}
+        \label{rec}
+    \end{figure}
+    This specific recorder can play notes from C5 to D7, which is a range of 27 total notes. Playing is accomplished by blowing into the mouthpiece and covering and uncovering the holes as required by each note and octave. This recorder also has a rotating end piece, which makes it easier to articulate with rigid mechanical components.
+    \newpage
+\subsubsection{Airflow}
+    The recorder is a woodwind instrument \cite{rec_wiki}, and being so it requires airflow to play. The proper airflow requirement is around 0.1 to 1 liter per second \cite{rec_info}, therefore while the speed of the air is less important, generating the correct airflow is necessary for good sound. To produce a balance between too much and too little airflow, three blower fans are mounted in series in order to control the flow. This is shown in Figure \ref{fan_fig}.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.75\textwidth]{fans.png}
+        \caption{Compound Fan Setup}
+        \label{fan_fig}
+    \end{figure}
+    The larger fan is a Dayton 1TDN1A, a 115V AC fan that can output 13CFM \cite{fan_info}. This blower motor provides the majority of the airflow, which is then pressurized using two 75x30mm blower fans, whose job it is only force the air through at a higher pressure. 
+
+    Controlling the air is done through a solid-state relay and the Raspberry Pi, as experimenting with different airflow configurations showed that all the high notes can be played with all three fans blowing, and the lower half of the spectrum can be played with the big fan turned off. This makes controlling airflow easy, instead of using a more complicated solution such as a PWM signal. This combination of fans has proven effective at pushing the perfect amount of air through the recorder, as any less faded out before hitting the high notes, and any more caused shrill shrieking sounds.
+
+    \subsubsection{Solenoids and Servos}
+    While the correct amount of air now properly flows through the recorder, only a single note would play if the holes are not used. To do this, a series of five solenoids and three servos is used. The five solenoids are meant to actuate the holes facing upwards, where a fully open or fully closed state is acceptable. For the holes that require variably closed and open states, the three servos are positioned under the recorder to close and open them as needed. A 3D model of the system is shown below in Figure \ref{rec_set_fig}.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.75\textwidth]{rec_setup.png}
+        \caption{3D Recorder Model}
+        \label{rec_set_fig}
+    \end{figure} 
+
+    The solenoids are rated for 12V, 1A at around 500g of actuation force. In reality, that is closer to around 600mA, but everything designed is rated for 1A. As stated previously, the Pi can only output 5V at 16mA, so a circuit has been designed in order to drive them. The power supply, which will be discussed later, provides both 12V and 5V, so a MOSFET is activated with the 5V GPIO signal, which allows 12V power to run the solenoids. The solenoids are inductive loads, so when they are deactivated, a spike of current flows back into the circuit. To protect the main circuit, a flyback diode is used to stop the current. This is shown in Figure \ref{sol_ckt}.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.75\textwidth]{solenoid_ckt.png}
+        \caption{Solenoid Circuit Diagram}
+        \label{sol_ckt}
+    \end{figure}
+    For the flyback diode, a Schottky diode is used for its fast switching abilities and high reverse breakdown voltage. When the GPIO pin is high, 12V flows through the circuit, which then can enter the solenoid. The servos are connected to dedicated 5V outputs, and the positions are controlled with the dedicated PWM connection.
+    \subsubsection{Power Supply and Driver PCB}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.75\textwidth]{pcb.png}
+        \caption{Main PCB}
+    \end{figure}
+    The PCB has been designed to provide power and outputs for all connected hardware. It is capable of providing a maximum of 12V at 7A and 5V at 6A. Input power is provided from a 12V, 15A AC to DC power supply, and is connected to the board using a GX-16 6 pin connector. A switch connects this input to the rest of the board, which then sends the power to the rest of the board.
+
+    The 5V is generated with a TPS566247DRLR, a 5V, 6A switch mode power supply. This voltage is output to four connectors, three for the servos and one for the Pi. The rest of the raw 12V power is routed to the six solenoid drivers and two fan drivers, which is the same circuit as the solenoid driver but lacking a flyback diode. The board is a four layer design, with a stackup consisting of signal-ground-12V-signal, measuring 1.6mm thick. The board is 100x60mm, with four M3 bolt holes for mounting to the apparatus. 
+    \subsubsection{Computational Power}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.65\textwidth]{rpi.png}
+        \caption{The Raspberry Pi Model 4B}
+    \end{figure}
+    The Pi used is a 4GB model with a quad core ARM processor. To aid the speed of the FFT execution for songs, the process will be multithreaded using Python's builtin threading library. GPIO pins 4, 17, 27, 22, 5, 6, 13, 19 are connected to the various solenoid and servo outputs. To provide the least overhead possible, instead of installing a full-fledged operating system, a headless version of Raspbian is used in combination with SSH for access.
+\section{Conclusion}
+    As of the due date of this paper, the project is currently unfinished. That being the case, the most challenging facets, the software and airflow, have been taken care of and are ready for integration with the remainder of the parts. Some of the main components still needed are the PCB, which also needs to be assembled, a final setup of the Raspberry Pi, full assembly of the entire system, and some builtin songs in the case of no user provided songs. The code is also currently written for only MP3s, so it must be adapted to either user MP3s or to play the hard-coded songs. In addition, a touchscreen must still be implemented for user interfacing, along with a USB insertion detection script. As this project has remained fairly ahead of schedule, considerations are also being made for a MIDI interface, which can plug directly into the Pi and be used to play music on the fly, for example using a keyboard and playing a recorder note. There are also plans to get the solenoid connectors laser cut out of aluminum, and to 3D print the necessary enclosures and holders.
+
+% \newpage
+\section{Appendix}
+\subsection{GANTT Chart and Budget}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.75\textwidth]{budget.png}
+        \caption{Current Budget}
+        \label{bud_fig}
+    \end{figure}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.75\textwidth]{gantt.png}
+        \caption{Current GANTT Chart Progress}
+        \label{gan_fig}
+    \end{figure}
+    As shown in Figures \ref{bud_fig} and \ref{gan_fig},the budget and GANTT are progressing well. The budget is currently sitting at around 63\% used, which is about how much of the semester has currently passed, keeping the budget on track. As shown in the GANTT chart, the majority of the items to be completed have either been completely finished or at least halfway done.
+\subsection{Safety and Ethics}
+    Special considerations must be thought of safety wise, as this project is meant to be presented to a classroom of elementary schoolers. Because of this, care has been taken to ensure AC power is never exposed anywhere a student might touch, and that the touchscreen access in general should only be relegated to the teacher of the classroom or the people of the lab group. It is also important to consider volume levels, as overblowing the recorder could cause a loud, sharp noise which could hurt a student. The maximum airflow of the fans has been found, and it is within an acceptable range as to not hurt any hearing. The ethical ramifications stem from the fact that human musicians are already paid very little for their talents, so developing an automated system to play an instrument might lead to less jobs. However, this machine will never be able to be as versatile and talented as a real person playing, so I think it is safe to say this shouldn't hurt any chances.
 
 \newpage
 \printbibliography

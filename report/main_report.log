@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.10.18)  24 OCT 2022 10:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.10.18)  25 OCT 2022 14:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -236,6 +236,45 @@ LaTeX Info: Redefining \Relbar on input line 971.
 \mathdisplay@stack=\toks22
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
+) (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/latex/csvsimple\csvsimple.sty (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/l3keys2e\l3keys2e.sty (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
+Package: expl3 2022-09-28 L3 programming layer (loader) 
+ (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
+File: l3backend-pdftex.def 2022-09-28 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count285
+\l__pdf_internal_box=\box53
+))
+Package: l3keys2e 2022-06-22 LaTeX2e option processing using LaTeX3 keys
+)
+Package: csvsimple 2022/09/20 v2.3.2 LaTeX CSV file processing
+) (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/latex/csvsimple\csvsimple-legacy.sty
+Package: csvsimple-legacy 2022/09/20 version 2.3.2 LaTeX2e CSV file processing
+ (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfrcs.sty (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-common.tex
+\pgfutil@everybye=\toks23
+\pgfutil@tempdima=\dimen164
+\pgfutil@tempdimb=\dimen165
+ (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-common-lists.tex)) (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-latex.def
+\pgfutil@abb=\box54
+) (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfrcs.code.tex (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.revision.tex)
+Package: pgfrcs 2021/05/15 v3.1.9a (3.1.9a)
+)) (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfkeys.sty (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks24
+\pgfkeys@temptoks=\toks25
+ (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeysfiltered.code.tex
+\pgfkeys@tmptoks=\toks26
+))) (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
+Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
+) (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count286
+) (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/latex/tools\shellesc.sty
+Package: shellesc 2019/11/08 v1.0c unified shell escape interface for LaTeX
+Package shellesc Info: Restricted shell escape enabled on input line 77.
+)
+\csv@file=\read2
+\c@csvinputline=\count287
+\c@csvrow=\count288
+\c@csvcol=\count289
+\csv@out=\write3
 ) (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
 ) (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/latex/tocbibind\tocbibind.sty
@@ -247,60 +286,55 @@ Package tocbibind Note: Using section or other style headings.
 
 ) (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.sty
 Package: biblatex 2022/07/12 v3.18b programmable bibliographies (PK/MW)
- (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
-Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count285
-) (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/latex/logreq\logreq.sty
+ (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/latex/logreq\logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count286
+\lrq@indent=\count290
  (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/latex/logreq\logreq.def
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
-)) (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
-Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
-)
-\c@tabx@nest=\count287
-\c@listtotal=\count288
-\c@listcount=\count289
-\c@liststart=\count290
-\c@liststop=\count291
-\c@citecount=\count292
-\c@citetotal=\count293
-\c@multicitecount=\count294
-\c@multicitetotal=\count295
-\c@instcount=\count296
-\c@maxnames=\count297
-\c@minnames=\count298
-\c@maxitems=\count299
-\c@minitems=\count300
-\c@citecounter=\count301
-\c@maxcitecounter=\count302
-\c@savedcitecounter=\count303
-\c@uniquelist=\count304
-\c@uniquename=\count305
-\c@refsection=\count306
-\c@refsegment=\count307
-\c@maxextratitle=\count308
-\c@maxextratitleyear=\count309
-\c@maxextraname=\count310
-\c@maxextradate=\count311
-\c@maxextraalpha=\count312
-\c@abbrvpenalty=\count313
-\c@highnamepenalty=\count314
-\c@lownamepenalty=\count315
-\c@maxparens=\count316
-\c@parenlevel=\count317
-\blx@tempcnta=\count318
-\blx@tempcntb=\count319
-\blx@tempcntc=\count320
-\c@blx@maxsection=\count321
-\blx@maxsegment@0=\count322
-\blx@notetype=\count323
-\blx@parenlevel@text=\count324
-\blx@parenlevel@foot=\count325
-\blx@sectionciteorder@0=\count326
-\blx@sectionciteorderinternal@0=\count327
-\blx@entrysetcounter=\count328
-\blx@biblioinstance=\count329
+))
+\c@tabx@nest=\count291
+\c@listtotal=\count292
+\c@listcount=\count293
+\c@liststart=\count294
+\c@liststop=\count295
+\c@citecount=\count296
+\c@citetotal=\count297
+\c@multicitecount=\count298
+\c@multicitetotal=\count299
+\c@instcount=\count300
+\c@maxnames=\count301
+\c@minnames=\count302
+\c@maxitems=\count303
+\c@minitems=\count304
+\c@citecounter=\count305
+\c@maxcitecounter=\count306
+\c@savedcitecounter=\count307
+\c@uniquelist=\count308
+\c@uniquename=\count309
+\c@refsection=\count310
+\c@refsegment=\count311
+\c@maxextratitle=\count312
+\c@maxextratitleyear=\count313
+\c@maxextraname=\count314
+\c@maxextradate=\count315
+\c@maxextraalpha=\count316
+\c@abbrvpenalty=\count317
+\c@highnamepenalty=\count318
+\c@lownamepenalty=\count319
+\c@maxparens=\count320
+\c@parenlevel=\count321
+\blx@tempcnta=\count322
+\blx@tempcntb=\count323
+\blx@tempcntc=\count324
+\c@blx@maxsection=\count325
+\blx@maxsegment@0=\count326
+\blx@notetype=\count327
+\blx@parenlevel@text=\count328
+\blx@parenlevel@foot=\count329
+\blx@sectionciteorder@0=\count330
+\blx@sectionciteorderinternal@0=\count331
+\blx@entrysetcounter=\count332
+\blx@biblioinstance=\count333
 \labelnumberwidth=\skip53
 \labelalphawidth=\skip54
 \biblabelsep=\skip55
@@ -309,12 +343,12 @@ Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
 \bibinitsep=\skip58
 \bibparsep=\skip59
 \bibhang=\skip60
-\blx@bcfin=\read2
-\blx@bcfout=\write3
+\blx@bcfin=\read3
+\blx@bcfout=\write4
 \blx@langwohyphens=\language79
-\c@mincomprange=\count330
-\c@maxcomprange=\count331
-\c@mincompwidth=\count332
+\c@mincomprange=\count334
+\c@maxcomprange=\count335
+\c@mincompwidth=\count336
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
  (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-dm.def
@@ -324,74 +358,74 @@ Package biblatex Info: Trying to load biblatex style data model...
 Package biblatex Info: ... file 'ieee.dbx' not found.
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
-\c@afterword=\count333
-\c@savedafterword=\count334
-\c@annotator=\count335
-\c@savedannotator=\count336
-\c@author=\count337
-\c@savedauthor=\count338
-\c@bookauthor=\count339
-\c@savedbookauthor=\count340
-\c@commentator=\count341
-\c@savedcommentator=\count342
-\c@editor=\count343
-\c@savededitor=\count344
-\c@editora=\count345
-\c@savededitora=\count346
-\c@editorb=\count347
-\c@savededitorb=\count348
-\c@editorc=\count349
-\c@savededitorc=\count350
-\c@foreword=\count351
-\c@savedforeword=\count352
-\c@holder=\count353
-\c@savedholder=\count354
-\c@introduction=\count355
-\c@savedintroduction=\count356
-\c@namea=\count357
-\c@savednamea=\count358
-\c@nameb=\count359
-\c@savednameb=\count360
-\c@namec=\count361
-\c@savednamec=\count362
-\c@translator=\count363
-\c@savedtranslator=\count364
-\c@shortauthor=\count365
-\c@savedshortauthor=\count366
-\c@shorteditor=\count367
-\c@savedshorteditor=\count368
-\c@labelname=\count369
-\c@savedlabelname=\count370
-\c@institution=\count371
-\c@savedinstitution=\count372
-\c@lista=\count373
-\c@savedlista=\count374
-\c@listb=\count375
-\c@savedlistb=\count376
-\c@listc=\count377
-\c@savedlistc=\count378
-\c@listd=\count379
-\c@savedlistd=\count380
-\c@liste=\count381
-\c@savedliste=\count382
-\c@listf=\count383
-\c@savedlistf=\count384
-\c@location=\count385
-\c@savedlocation=\count386
-\c@organization=\count387
-\c@savedorganization=\count388
-\c@origlocation=\count389
-\c@savedoriglocation=\count390
-\c@origpublisher=\count391
-\c@savedorigpublisher=\count392
-\c@publisher=\count393
-\c@savedpublisher=\count394
-\c@language=\count395
-\c@savedlanguage=\count396
-\c@origlanguage=\count397
-\c@savedoriglanguage=\count398
-\c@pageref=\count399
-\c@savedpageref=\count400
+\c@afterword=\count337
+\c@savedafterword=\count338
+\c@annotator=\count339
+\c@savedannotator=\count340
+\c@author=\count341
+\c@savedauthor=\count342
+\c@bookauthor=\count343
+\c@savedbookauthor=\count344
+\c@commentator=\count345
+\c@savedcommentator=\count346
+\c@editor=\count347
+\c@savededitor=\count348
+\c@editora=\count349
+\c@savededitora=\count350
+\c@editorb=\count351
+\c@savededitorb=\count352
+\c@editorc=\count353
+\c@savededitorc=\count354
+\c@foreword=\count355
+\c@savedforeword=\count356
+\c@holder=\count357
+\c@savedholder=\count358
+\c@introduction=\count359
+\c@savedintroduction=\count360
+\c@namea=\count361
+\c@savednamea=\count362
+\c@nameb=\count363
+\c@savednameb=\count364
+\c@namec=\count365
+\c@savednamec=\count366
+\c@translator=\count367
+\c@savedtranslator=\count368
+\c@shortauthor=\count369
+\c@savedshortauthor=\count370
+\c@shorteditor=\count371
+\c@savedshorteditor=\count372
+\c@labelname=\count373
+\c@savedlabelname=\count374
+\c@institution=\count375
+\c@savedinstitution=\count376
+\c@lista=\count377
+\c@savedlista=\count378
+\c@listb=\count379
+\c@savedlistb=\count380
+\c@listc=\count381
+\c@savedlistc=\count382
+\c@listd=\count383
+\c@savedlistd=\count384
+\c@liste=\count385
+\c@savedliste=\count386
+\c@listf=\count387
+\c@savedlistf=\count388
+\c@location=\count389
+\c@savedlocation=\count390
+\c@organization=\count391
+\c@savedorganization=\count392
+\c@origlocation=\count393
+\c@savedoriglocation=\count394
+\c@origpublisher=\count395
+\c@savedorigpublisher=\count396
+\c@publisher=\count397
+\c@savedpublisher=\count398
+\c@language=\count399
+\c@savedlanguage=\count400
+\c@origlanguage=\count401
+\c@savedoriglanguage=\count402
+\c@pageref=\count403
+\c@savedpageref=\count404
 \shorthandwidth=\skip61
 \shortjournalwidth=\skip62
 \shortserieswidth=\skip63
@@ -415,19 +449,19 @@ Package biblatex Info: Trying to load generic definitions...
 Package biblatex Info: ... file 'biblatex.def' found.
  (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.def
 File: biblatex.def 2022/07/12 v3.18b biblatex compatibility (PK/MW)
-\c@textcitecount=\count401
-\c@textcitetotal=\count402
-\c@textcitemaxnames=\count403
-\c@biburlbigbreakpenalty=\count404
-\c@biburlbreakpenalty=\count405
-\c@biburlnumpenalty=\count406
-\c@biburlucpenalty=\count407
-\c@biburllcpenalty=\count408
+\c@textcitecount=\count405
+\c@textcitetotal=\count406
+\c@textcitemaxnames=\count407
+\c@biburlbigbreakpenalty=\count408
+\c@biburlbreakpenalty=\count409
+\c@biburlnumpenalty=\count410
+\c@biburlucpenalty=\count411
+\c@biburllcpenalty=\count412
 \biburlbigskip=\muskip18
 \biburlnumskip=\muskip19
 \biburlucskip=\muskip20
 \biburllcskip=\muskip21
-\c@smartand=\count409
+\c@smartand=\count413
 )
 Package biblatex Info: Trying to load bibliography style 'ieee'...
 Package biblatex Info: ... file 'ieee.bbx' found.
@@ -445,8 +479,8 @@ Package biblatex Info: Trying to load bibliography style 'standard'...
 Package biblatex Info: ... file 'standard.bbx' found.
  (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\standard.bbx
 File: standard.bbx 2022/07/12 v3.18b biblatex bibliography style (PK/MW)
-\c@bbx:relatedcount=\count410
-\c@bbx:relatedtotal=\count411
+\c@bbx:relatedcount=\count414
+\c@bbx:relatedtotal=\count415
 ))))
 Package biblatex Info: Trying to load citation style 'ieee'...
 Package biblatex Info: ... file 'ieee.cbx' found.
@@ -456,10 +490,10 @@ Package biblatex Info: Trying to load citation style 'numeric-comp'...
 Package biblatex Info: ... file 'numeric-comp.cbx' found.
  (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/cbx\numeric-comp.cbx
 File: numeric-comp.cbx 2022/07/12 v3.18b biblatex citation style (PK/MW)
-\c@cbx@tempcnta=\count412
-\c@cbx@tempcntb=\count413
-\c@cbx@tempcntc=\count414
-\c@cbx@tempcntd=\count415
+\c@cbx@tempcnta=\count416
+\c@cbx@tempcntb=\count417
+\c@cbx@tempcntc=\count418
+\c@cbx@tempcntd=\count419
 Package biblatex Info: Redefining '\cite'.
 Package biblatex Info: Redefining '\parencite'.
 Package biblatex Info: Redefining '\footcite'.
@@ -483,13 +517,6 @@ File: biblatex.cfg
 )
 Package biblatex Info: Input encoding 'utf8' detected.
 Package biblatex Info: Document encoding is UTF8 ....
- (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
-Package: expl3 2022-09-28 L3 programming layer (loader) 
- (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
-File: l3backend-pdftex.def 2022-09-28 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count416
-\l__pdf_internal_box=\box53
-))
 Package biblatex Info: ... and expl3
 (biblatex)             2022-09-28 L3 programming layer (loader) 
 (biblatex)             is new enough (at least 2020/04/06),
@@ -499,8 +526,8 @@ Package: xparse 2022-06-22 L3 Experimental document command parser
 )
 Package: blx-case-expl3 2022/07/12 v3.18b expl3 case changing code for biblatex
 ))
-\@quotelevel=\count417
-\@quotereset=\count418
+\@quotelevel=\count420
+\@quotereset=\count421
 
 
 LaTeX Warning: Unused global option(s):
@@ -509,24 +536,24 @@ LaTeX Warning: Unused global option(s):
 (main_report.aux)
 \openout1 = `main_report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -564,27 +591,27 @@ LaTeX Font Info:    ... okay on input line 36.
 
 (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count419
-\scratchdimen=\dimen164
-\scratchbox=\box54
-\nofMPsegments=\count420
-\nofMParguments=\count421
-\everyMPshowfont=\toks23
-\MPscratchCnt=\count422
-\MPscratchDim=\dimen165
-\MPnumerator=\count423
-\makeMPintoPDFobject=\count424
-\everyMPtoPDFconversion=\toks24
+\scratchcounter=\count422
+\scratchdimen=\dimen166
+\scratchbox=\box55
+\nofMPsegments=\count423
+\nofMParguments=\count424
+\everyMPshowfont=\toks27
+\MPscratchCnt=\count425
+\MPscratchDim=\dimen167
+\MPnumerator=\count426
+\makeMPintoPDFobject=\count427
+\everyMPtoPDFconversion=\toks28
 ) (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring OFF on input line 36.
+Package hyperref Info: Link coloring OFF on input line 37.
  (main_report.out) (main_report.out)
-\@outlinefile=\write4
-\openout4 = `main_report.out'.
+\@outlinefile=\write5
+\openout5 = `main_report.out'.
 
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
@@ -594,89 +621,167 @@ File: english.lbx 2022/07/12 v3.18b biblatex localization (PK/MW)
 Package biblatex Info: Input encoding 'utf8' detected.
 Package biblatex Info: Automatic encoding selection.
 (biblatex)             Assuming data encoding 'utf8'.
-\openout3 = `main_report.bcf'.
+\openout4 = `main_report.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main_report.bbl' found.
  (main_report.bbl)
-Package biblatex Info: Reference section=0 on input line 36.
-Package biblatex Info: Reference segment=0 on input line 36.
+Package biblatex Info: Reference section=0 on input line 37.
+Package biblatex Info: Reference segment=0 on input line 37.
  [1
 
 {C:/Users/dirkt/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [1] (main_report.toc)
-\tf@toc=\write5
-\openout5 = `main_report.toc'.
+\tf@toc=\write6
+\openout6 = `main_report.toc'.
 
  [2] (main_report.lof)
-\tf@lof=\write6
-\openout6 = `main_report.lof'.
+\tf@lof=\write7
+\openout7 = `main_report.lof'.
 
  [3] [4] [5]
-<images//flowchart.png, id=94, 773.89125pt x 734.745pt>
+<images//flowchart.png, id=162, 773.89125pt x 734.745pt>
 File: images//flowchart.png Graphic file (type png)
 <use images//flowchart.png>
-Package pdftex.def Info: images//flowchart.png  used on input line 78.
+Package pdftex.def Info: images//flowchart.png  used on input line 79.
 (pdftex.def)             Requested size: 352.31625pt x 334.50008pt.
  [6 <./images//flowchart.png>]
-<images//ffmpeg_code.png, id=105, 545.78906pt x 446.41782pt>
+<images//ffmpeg_code.png, id=173, 545.78906pt x 446.41782pt>
 File: images//ffmpeg_code.png Graphic file (type png)
 <use images//ffmpeg_code.png>
-Package pdftex.def Info: images//ffmpeg_code.png  used on input line 88.
+Package pdftex.def Info: images//ffmpeg_code.png  used on input line 89.
 (pdftex.def)             Requested size: 352.31625pt x 288.17229pt.
  [7 <./images//ffmpeg_code.png>] [8]
-<images//wave_parse.png, id=124, 675.27281pt x 631.60968pt>
+<images//wave_parse.png, id=192, 675.27281pt x 631.60968pt>
 File: images//wave_parse.png Graphic file (type png)
 <use images//wave_parse.png>
-Package pdftex.def Info: images//wave_parse.png  used on input line 106.
+Package pdftex.def Info: images//wave_parse.png  used on input line 107.
 (pdftex.def)             Requested size: 258.36668pt x 241.6622pt.
  [9 <./images//wave_parse.png>]
-<images//waveform.png, id=132, 818.30719pt x 561.59813pt>
+<images//waveform.png, id=200, 818.30719pt x 561.59813pt>
 File: images//waveform.png Graphic file (type png)
 <use images//waveform.png>
-Package pdftex.def Info: images//waveform.png  used on input line 116.
+Package pdftex.def Info: images//waveform.png  used on input line 117.
 (pdftex.def)             Requested size: 352.31625pt x 241.79099pt.
  [10 <./images//waveform.png>]
-<images//check2.png, id=144, 344.03531pt x 60.97781pt>
+<images//check2.png, id=212, 344.03531pt x 60.97781pt>
 File: images//check2.png Graphic file (type png)
 <use images//check2.png>
-Package pdftex.def Info: images//check2.png  used on input line 128.
+Package pdftex.def Info: images//check2.png  used on input line 129.
 (pdftex.def)             Requested size: 352.31625pt x 62.44588pt.
-<images//calc2.png, id=146, 452.892pt x 255.95625pt>
+<images//calc2.png, id=214, 452.892pt x 255.95625pt>
 File: images//calc2.png Graphic file (type png)
 <use images//calc2.png>
-Package pdftex.def Info: images//calc2.png  used on input line 137.
+Package pdftex.def Info: images//calc2.png  used on input line 138.
 (pdftex.def)             Requested size: 328.82707pt x 185.84276pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[11 <./images//check2.png>] [12 <./images//calc2.png>] [13]
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 156.
+[11 <./images//check2.png>] [12 <./images//calc2.png>]
+<images//fft_peaks.png, id=239, 340.27126pt x 257.763pt>
+File: images//fft_peaks.png Graphic file (type png)
+<use images//fft_peaks.png>
+Package pdftex.def Info: images//fft_peaks.png  used on input line 161.
+(pdftex.def)             Requested size: 352.31625pt x 266.90298pt.
+ [13 <./images//fft_peaks.png>]
+<images//recorder.png, id=247, 413.1435pt x 367.3725pt>
+File: images//recorder.png Graphic file (type png)
+<use images//recorder.png>
+Package pdftex.def Info: images//recorder.png  used on input line 179.
+(pdftex.def)             Requested size: 352.31625pt x 313.29391pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[14]
+<images//fans.png, id=256, 289.08pt x 218.0145pt>
+File: images//fans.png Graphic file (type png)
+<use images//fans.png>
+Package pdftex.def Info: images//fans.png  used on input line 189.
+(pdftex.def)             Requested size: 352.31625pt x 265.71779pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[15 <./images//recorder.png>]
+<images//rec_setup.png, id=266, 256.5585pt x 239.09325pt>
+File: images//rec_setup.png Graphic file (type png)
+<use images//rec_setup.png>
+Package pdftex.def Info: images//rec_setup.png  used on input line 201.
+(pdftex.def)             Requested size: 352.31625pt x 328.36568pt.
+ [16 <./images//fans.png>]
+<images//solenoid_ckt.png, id=273, 274.626pt x 249.93375pt>
+File: images//solenoid_ckt.png Graphic file (type png)
+<use images//solenoid_ckt.png>
+Package pdftex.def Info: images//solenoid_ckt.png  used on input line 209.
+(pdftex.def)             Requested size: 352.31625pt x 320.6387pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[17 <./images//rec_setup.png>]
+<images//pcb.png, id=279, 633.567pt x 389.65575pt>
+File: images//pcb.png Graphic file (type png)
+<use images//pcb.png>
+Package pdftex.def Info: images//pcb.png  used on input line 217.
+(pdftex.def)             Requested size: 352.31625pt x 216.67769pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[18 <./images//solenoid_ckt.png>]
+<images//rpi.png, id=286, 573.14125pt x 341.275pt>
+File: images//rpi.png Graphic file (type png)
+<use images//rpi.png>
+Package pdftex.def Info: images//rpi.png  used on input line 226.
+(pdftex.def)             Requested size: 305.33789pt x 181.81221pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[19 <./images//pcb.png>]
+<images//budget.png, id=292, 411.33675pt x 442.65375pt>
+File: images//budget.png Graphic file (type png)
+<use images//budget.png>
+Package pdftex.def Info: images//budget.png  used on input line 238.
+(pdftex.def)             Requested size: 352.31625pt x 379.15506pt.
+ [20 <./images//rpi.png>]
+<images//gantt.png, id=298, 1102.1175pt x 449.88075pt>
+File: images//gantt.png Graphic file (type png)
+<use images//gantt.png>
+Package pdftex.def Info: images//gantt.png  used on input line 244.
+(pdftex.def)             Requested size: 352.31625pt x 143.81375pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[21 <./images//budget.png>] [22 <./images//gantt.png>]
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 253.
  (C:\Users\dirkt\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-) [14] (main_report.aux)
+) [23] (main_report.aux)
 Package rerunfilecheck Info: File `main_report.out' has not changed.
-(rerunfilecheck)             Checksum: C63935C3A1795125D04672A25A06640A;1156.
+(rerunfilecheck)             Checksum: 441FAA4CB0E47F6E7C5556E352EF401E;2546.
 Package logreq Info: Writing requests to 'main_report.run.xml'.
 \openout1 = `main_report.run.xml'.
 
  )
 (\end occurred inside a group at level 1)
 
-### semi simple group (level 1) entered at line 42 (\begingroup)
+### semi simple group (level 1) entered at line 43 (\begingroup)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 17534 strings out of 475385
- 310698 string characters out of 2776906
- 1063373 words of memory out of 3000000
- 38661 multiletter control sequences out of 15000+600000
+ 19007 strings out of 475385
+ 348060 string characters out of 2776906
+ 1094261 words of memory out of 3000000
+ 40049 multiletter control sequences out of 15000+600000
  481982 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,7n,77p,1066b,1371s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 72i,7n,77p,1151b,1383s stack positions out of 10000i,1000n,20000p,200000b,80000s
  <C:\Users\dirkt\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\dirkt\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk> <C:\Users\dirkt\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\dirkt\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\dirkt\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\dirkt\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\dirkt\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\dirkt\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\dirkt\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\dirkt\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm2074.pk><C:/Users/dirkt/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/dirkt/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/dirkt/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/dirkt/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/dirkt/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/dirkt/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/dirkt/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on main_report.pdf (15 pages, 521490 bytes).
+Output written on main_report.pdf (24 pages, 1464325 bytes).
 PDF statistics:
- 546 PDF objects out of 1000 (max. 8388607)
- 46 named destinations out of 1000 (max. 500000)
- 95 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 738 PDF objects out of 1000 (max. 8388607)
+ 78 named destinations out of 1000 (max. 500000)
+ 220 words of extra memory for PDF output out of 10000 (max. 10000000)
 
