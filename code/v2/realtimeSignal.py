@@ -3,9 +3,13 @@ import struct
 import cmath
 import math
 import time
+import subprocess
 
-"""Class of useful functions to process music files"""
+from constants import freq_to_notes, usable_notes
+
 class Signal:
+	"""Class of useful functions to process music files"""
+
 	# CONSTANTS
 	# formatting string
 	FMT_4B_LE = "<L"
@@ -16,9 +20,107 @@ class Signal:
 	# 1/10 of a second
 	WINDOW_TIMING = 4410
 
+	exe = "ffmpeg"
+
+	# bandpass filtering constants
+	LOW_FILTER = 65.41  # start at C2
+	HIGH_FILTER = 9000.00  # end at range of useful instruments
+
+	# debug print flag
+	DEBUG = False
+
+
 	# PUBLIC METHODS
 	@staticmethod
-	def freq_from_song(bytestream, DEBUG=False):
+	def RunFFT(filename):
+		# define command to run when decoding mp3
+		cmd = [Signal.exe, 		# ffmpeg executable
+			"-i", 		# input
+			filename, 	# name of input file (mp3)
+			"-ab",		# set bitrate
+			"128k",		# bitrate of input file
+			"-acodec",   # set audio codec
+			"pcm_s16le",  # using PCM signed 16-bit little-endian
+			"-map",		# map audio streams
+			"0:a",		# from file 0, take only audio
+			"-sn",		# ignore any subtitle
+			"-vn",		# ignore any video
+			"-ac",       # set channels
+			"1",	        # mono
+			"-y",		# override output
+			"-f",		# set output format
+			"wav",		# wav format
+			"pipe:1"]    # pipe output to stdout and stderr
+
+		# subprocess command, piping outputs to this program
+		output = subprocess.run(cmd, stdout=subprocess.PIPE,
+								stderr=subprocess.PIPE, bufsize=10**8)
+
+		# get frequency list from song
+		freqList, timeSpent = Signal._freq_from_song(output.stdout, Signal.DEBUG)
+		if Signal.DEBUG:
+			print(freqList)
+			print(f"Time spent: {timeSpent} seconds\n")
+
+		# start loop
+		while True:
+			tempFreqList = []
+			# count how many times each frequency is the same
+			try:
+				# pop item off the list
+				tempFreqList.append(freqList.pop(0))
+			except IndexError:
+				break
+
+			while True:
+				try:
+					if freqList[0] != tempFreqList[0] and freqList[1] != tempFreqList[0]:
+						break
+					elif freqList[0] != tempFreqList[0] and freqList[1] == tempFreqList[0]:
+						tempFreqList.append(tempFreqList[0])
+					tempFreqList.append(freqList.pop(0))
+				except IndexError:
+					break
+
+			# divide by time window size (1/10 of a second)
+			timeToPlay = len(tempFreqList) / 10
+
+			# get frequency
+			unmodFreq = tempFreqList[0]
+
+			# throw away unnecessary frequencies
+			if unmodFreq < Signal.LOW_FILTER or unmodFreq > Signal.HIGH_FILTER:
+				continue
+
+			# find note from frequency
+			# * one day optimize?
+			foundNote = None
+			for key in freq_to_notes:
+				# find +- 10 percent of range
+				keyUpper = key * 1.05
+				keyLower = key * 0.95
+
+				# if the frequency within the range, use that number
+				if unmodFreq >= keyLower and unmodFreq <= keyUpper:
+					foundNote = freq_to_notes[key]
+
+			if foundNote == None:
+				foundNote = freq_to_notes[7902.13]
+
+			trueNote = Signal._findUsableNote(foundNote)
+			print(trueNote)
+
+			# set a timer to play note for that long
+			timer = time.time()
+			while time.time() - timer <= timeToPlay:
+				# send GPIO signal corresponding to note for that length of time
+				# ! need to know which GPIO pins are connected to which solenoid
+				continue
+
+
+	# PRIVATE METHODS
+	@staticmethod
+	def _freq_from_song(bytestream, DEBUG=False):
 		"""Generate frequency list from given audio file
 			Audio file must be given in WAVE format
 			Returns frequency list and time taken if DEBUG is True,
@@ -81,7 +183,16 @@ class Signal:
 		return freqList, 0
 
 
-	# PRIVATE METHODS
+	@staticmethod
+	def _findUsableNote(note):
+		if note in usable_notes:
+			return note
+		elif note[-1] < usable_notes[0][-1]:
+			return note[:-1] + usable_notes[0][-1]
+		elif note[-1] > usable_notes[-1][-1]:
+			return note[:-1] + usable_notes[-1][-1]
+
+
 	@staticmethod
 	def _fft(signalList):
 		# based on cooley-tukey algorithm from wikipedia and youtube
@@ -113,33 +224,6 @@ class Signal:
 			mainList[i + sizeOfList // 2] = newSigListEven[i] - ((omega ** i) * newSigListOdd[i])
 
 		return mainList
-
-
-	@staticmethod
-	def _hps(signal):
-		# perform Harmonic Product Spectrum Algorithm to filter current window
-		compSignalTwo = Signal._decimate(signal, 2)
-		compSignalThree = Signal._decimate(signal, 3)
-
-		newList = []
-
-		for i in range(len(signal)):
-			newList.append(signal[i] * compSignalTwo[i] * compSignalThree[i])
-
-		return newList
-
-
-	@staticmethod
-	def _decimate(signalList, D):
-		newList = []
-
-		for i in range(len(signalList)):
-			if i % D == 0:
-				newList.append(signalList[i])
-			else:
-				newList.append(0)
-
-		return list(newList)
 
 
 	@staticmethod
@@ -220,32 +304,3 @@ class Signal:
 	@staticmethod
 	def _isPowerOfTwo(n): 
 		return (n != 0) and (n & (n - 1) == 0)
-
-######### Mason's Edition 10/30/22 #########
-
-class HardcodeSong:
-	def __init__(self, name, tempo, notes, rhythm):
-		self.name = str (name) #Name of the Song
-		#converting tempo from [Beats per Minute] to [Seconds per Beat]
-		self.tempo = math.pow((tempo/60), -1)
-		#Lists of Notes (To be Converted to GPIO) & Note Lengths
-		self.notes = list (notes) 
-		self.rhythm = list (rhythm)
-
-	def SongPlayback(self):
-		print("Playing Hardcoded Song: " + self.name)
-		for i in range(len(self.notes)):
-			# Reset after each loop
-			Note = ""
-			Value = 0
-			# Pop a note and rhythm off the two lists
-			Note = self.notes[i]
-			Value = (self.rhythm[i])*self.tempo
-			# Play/Print True note (Find GPIO Pin Input) [[Will eventually become a program to recode the string inputs as GPIO outputs]]
-			print(Note)
-			# Wait = (Multiply Rhythm by tempo: Note Len) [[Will use a wait program to send that specific found pitch to the GPIO pins]]
-			timer = time.time()
-			while time.time() - timer <= Value:
-				# send GPIO signal corresponding to note for that length of time
-				#! need to know which GPIO pins are connected to which solenoid
-				continue

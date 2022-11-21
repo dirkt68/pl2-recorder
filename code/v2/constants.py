@@ -1,5 +1,5 @@
 # USER LIBRARY (For Hardcoded Songs)
-from signalProcessing import HardcodeSong
+from hardcodeSignal import HardcodeSong
 
 # all possible frequencies that would be from a song
 freq_to_notes = {16.35: 'C0', 

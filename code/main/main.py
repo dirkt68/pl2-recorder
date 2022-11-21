@@ -1,7 +1,6 @@
 # PYTHON LIBRARIES
 import subprocess
 import time
-import librosa
 
 # USER LIBRARIES
 from signalProcessing import Signal

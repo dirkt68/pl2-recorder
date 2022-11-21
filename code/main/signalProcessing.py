@@ -3,6 +3,8 @@ import struct
 import cmath
 import math
 import time
+import json
+import socket
 
 """Class of useful functions to process music files"""
 class Signal:
@@ -29,6 +31,14 @@ class Signal:
 			timerStart = time.perf_counter()
 
 		completeSignal = Signal._unpackWAVE(bytestream)
+
+		# send processed signal over the network as a JSON object
+		jsonOut = json.dumps(completeSignal)
+		with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+			s.connect(("127.0.0.1", 1024))
+			s.sendall(bytes(jsonOut,encoding="UTF-8"))
+			data = s.recv(10**8)
+			print(data)
 
 		freqList = []
 		offset = 0
