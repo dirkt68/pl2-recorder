@@ -1,5 +1,6 @@
 import time
 import math
+from notes import Notes
 
 class HardcodeSong:
 	def __init__(self, name, tempo, notes, rhythm):
@@ -19,10 +20,9 @@ class HardcodeSong:
 			Note = self.notes[i]
 			Value = (self.rhythm[i])*self.tempo
 			# Play/Print True note (Find GPIO Pin Input) [[Will eventually become a program to recode the string inputs as GPIO outputs]]
-			print(Note)
+			# print(Note)
 			# Wait = (Multiply Rhythm by tempo: Note Len) [[Will use a wait program to send that specific found pitch to the GPIO pins]]
 			timer = time.time()
 			while time.time() - timer <= Value:
 				# send GPIO signal corresponding to note for that length of time
-				#! need to know which GPIO pins are connected to which solenoid
 				continue

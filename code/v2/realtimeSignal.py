@@ -5,6 +5,7 @@ import math
 import time
 import subprocess
 
+from notes import Notes
 from constants import freq_to_notes, usable_notes
 
 class Signal:
@@ -108,14 +109,10 @@ class Signal:
 				foundNote = freq_to_notes[7902.13]
 
 			trueNote = Signal._findUsableNote(foundNote)
-			print(trueNote)
+			# print(trueNote)
 
 			# set a timer to play note for that long
-			timer = time.time()
-			while time.time() - timer <= timeToPlay:
-				# send GPIO signal corresponding to note for that length of time
-				# ! need to know which GPIO pins are connected to which solenoid
-				continue
+			Notes.playNote(trueNote, timeToPlay)
 
 
 	# PRIVATE METHODS

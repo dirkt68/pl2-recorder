@@ -34,7 +34,7 @@ class GUI(tk.Tk):
         # hard frame config
         ttk.Label(self.hardFrame, text="Hardcoded Song List", font=("", 20)).place(relx=0.5, rely=0.15, anchor="center")
         songListItems = tk.Variable(value=list([songList[i].name for i in range(len(songList))]))
-        songListBox = tk.Listbox(self.hardFrame, listvariable=songListItems, height=12, width=30, font=("", 20), selectmode=tk.SINGLE)
+        songListBox = tk.Listbox(self.hardFrame, listvariable=songListItems, height=len(songList), width=30, font=("", 20), selectmode=tk.SINGLE)
         songListBox.place(relx=0.5, rely=0.45, anchor='center')
         tk.Button(self.hardFrame, text="Click to Play Selected Song",
                                 width=75,
@@ -46,7 +46,7 @@ class GUI(tk.Tk):
         self.label = ttk.Label(self.realFrame, text=self.filename, font=("", 15))
         self.label.place(relx=0.5,rely=0.3, anchor="center")
         tk.Button(self.realFrame, text="Click to Choose MP3 File", width=75, height=4,command=self.selectFile).place(relx=0.5, rely=0.475, anchor="center")
-        tk.Button(self.realFrame, text="Click to Play Chosen File!", width=75, height=4,command=self.playCustomSong).place(relx=0.5, rely=0.575, anchor="center")
+        tk.Button(self.realFrame, text="Click to Play Song", width=75, height=4,command=self.playCustomSong).place(relx=0.5, rely=0.575, anchor="center")
 
         # add to notebook
         self.book.add(self.hardFrame, text="Hardcoded Songs")
@@ -64,6 +64,7 @@ class GUI(tk.Tk):
                                            filetypes=filetypes)
         self.label.config(text=self.filename)
 
+        
     def playCustomSong(self):
         if self.filename == "None chosen...":
             return
