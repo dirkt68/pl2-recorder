@@ -3,19 +3,18 @@ import math
 
 class HardcodeSong:
 	def __init__(self, name, tempo, notes, rhythm):
-		self.name = str (name) #Name of the Song
+		self.name = name #Name of the Song
 		#converting tempo from [Beats per Minute] to [Seconds per Beat]
 		self.tempo = math.pow((tempo/60), -1)
 		#Lists of Notes (To be Converted to GPIO) & Note Lengths
-		self.notes = list (notes) 
-		self.rhythm = list (rhythm)
+		self.notes = notes 
+		self.rhythm = rhythm
 
 	def SongPlayback(self):
 		print("Playing Hardcoded Song: " + self.name)
+		Note = ""
+		Value = 0
 		for i in range(len(self.notes)):
-			# Reset after each loop
-			Note = ""
-			Value = 0
 			# Pop a note and rhythm off the two lists
 			Note = self.notes[i]
 			Value = (self.rhythm[i])*self.tempo

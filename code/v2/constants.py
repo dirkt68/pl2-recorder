@@ -1,5 +1,6 @@
 # USER LIBRARY (For Hardcoded Songs)
 from hardcodeSignal import HardcodeSong
+from enum import Enum
 
 # all possible frequencies that would be from a song
 freq_to_notes = {16.35: 'C0', 
@@ -203,3 +204,19 @@ King_Wenceslas = HardcodeSong("Good King Wenceslas", 130,
 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 2.0, 1.0, 1.0, 1.0, 1.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 2.0, 1.0, 1.0, 1.0, 1.0, 2.0, 2.0, 4.0])
 
 songList = [Hot_Cross_Buns, Gently_Sleep, Roll_Along, Its_Raining, Old_Mcdonald, O_Saints, Twinkle_Star, Ode_Joy, French_Tune, Jingle_Bells, Jolly_Nick, King_Wenceslas]
+
+# note setup :: note/octave = (sol1, sol2, sol3, sol4, sol5, servo1, servo2, servo3)
+# solenoids are SOL_OPEN/SOL_CLOSED, servos are SERVO_CLOSED, SERVO_HALF, SERVO_OPEN
+
+# enum for positions
+class Notes(Enum):
+    # servos
+    SERVO_CLOSED = 0
+    SERVO_HALF = 1
+    SERVO_OPEN = 2
+
+    # solenoid
+    SOL_OPEN = False
+    SOL_CLOSED = True
+
+

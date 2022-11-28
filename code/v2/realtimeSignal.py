@@ -121,15 +121,11 @@ class Signal:
 	# PRIVATE METHODS
 	@staticmethod
 	def _freq_from_song(bytestream, DEBUG=False):
-		"""Generate frequency list from given audio file
-			Audio file must be given in WAVE format
-			Returns frequency list and time taken if DEBUG is True,
-			otherwise returns frequency list and 0"""
-
 		# time length of function if wanted
 		if DEBUG:
 			timerStart = time.perf_counter()
 
+		# unpack WAVE file as corrected signal
 		completeSignal = Signal._unpackWAVE(bytestream)
 
 		freqList = []
@@ -143,8 +139,9 @@ class Signal:
 				# break loop at the end of list
 				break
 
+			# sometimes would result in lengths of zero, not sure why
 			if len(newBin) == 0:
-				break
+				continue
 
 			# check if length of bin is a power of 2
 			if not Signal._isPowerOfTwo(len(newBin)):
@@ -154,8 +151,6 @@ class Signal:
 
 			# take fft of bin
 			binList = Signal._fft(newBin)
-			# perform HPS algorithm
-			# binList = Signal._hps(binList)
 			# only need first half, second half is complex conjugates
 			binList = binList[:len(binList) // 2]
 			# take absolute values
