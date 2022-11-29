@@ -1,4 +1,3 @@
-import time
 import math
 from notes import Notes
 
@@ -11,8 +10,9 @@ class HardcodeSong:
 		self.notes = notes 
 		self.rhythm = rhythm
 
-	def SongPlayback(self):
+	def SongPlayback(self, noteObj:Notes):
 		print("Playing Hardcoded Song: " + self.name)
+		noteObj.spoolFan()
 		Note = ""
 		Value = 0
 		for i in range(len(self.notes)):
@@ -22,7 +22,7 @@ class HardcodeSong:
 			# Play/Print True note (Find GPIO Pin Input) [[Will eventually become a program to recode the string inputs as GPIO outputs]]
 			# print(Note)
 			# Wait = (Multiply Rhythm by tempo: Note Len) [[Will use a wait program to send that specific found pitch to the GPIO pins]]
-			timer = time.time()
-			while time.time() - timer <= Value:
-				# send GPIO signal corresponding to note for that length of time
-				continue
+			noteObj.playNote(Note, Value)
+
+		noteObj.GPIOClean()
+		

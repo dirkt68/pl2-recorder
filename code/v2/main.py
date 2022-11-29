@@ -1,10 +1,12 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import filedialog as fd
+import RPi.GPIO as GPIO
 
 # USER LIBRARIES
 from realtimeSignal import Signal
 from constants import songList
+from notes import Notes
 
 
 class GUI(tk.Tk):
@@ -12,10 +14,12 @@ class GUI(tk.Tk):
         super().__init__()
         # extra constants
         self.filename = "None chosen..."
+        self.noteObject = Notes()
 
         # window setup
         self.title("Automatic Recorder")
-        self.state("zoomed")
+        # self.state("zoomed")
+        self.attributes("-fullscreen", True)
 
         # configure rows and columns for auto-scaling
         self.grid_rowconfigure(0, weight=1)
@@ -39,7 +43,7 @@ class GUI(tk.Tk):
         tk.Button(self.hardFrame, text="Click to Play Selected Song",
                                 width=75,
                                 height=4,
-                                command=lambda: songList[songListBox.curselection()[0]].SongPlayback()).place(relx=0.5, rely=0.775, anchor="center")
+                                command=lambda: songList[songListBox.curselection()[0]].SongPlayback(self.noteObject)).place(relx=0.5, rely=0.775, anchor="center")
         
         # real frame config
         ttk.Label(self.realFrame, text="Play Custom Song", font=("", 20)).place(relx=0.5, rely=0.15, anchor="center")
@@ -68,7 +72,13 @@ class GUI(tk.Tk):
     def playCustomSong(self):
         if self.filename == "None chosen...":
             return
-        Signal.RunFFT(self.filename)
+        self.noteObject.spoolFan()
+        Signal.RunFFT(self.filename, self.noteObject)
+
+    
+
+
+
 
 
 def main():

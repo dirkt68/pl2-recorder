@@ -33,7 +33,7 @@ class Signal:
 
 	# PUBLIC METHODS
 	@staticmethod
-	def RunFFT(filename):
+	def RunFFT(filename, noteObj: Notes):
 		# define command to run when decoding mp3
 		cmd = [Signal.exe, 		# ffmpeg executable
 			"-i", 		# input
@@ -112,7 +112,9 @@ class Signal:
 			# print(trueNote)
 
 			# set a timer to play note for that long
-			Notes.playNote(trueNote, timeToPlay)
+			noteObj.playNote(trueNote, timeToPlay)
+
+		noteObj.GPIOClean()
 
 
 	# PRIVATE METHODS
