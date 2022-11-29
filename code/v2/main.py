@@ -72,7 +72,7 @@ class GUI(tk.Tk):
     def playCustomSong(self):
         if self.filename == "None chosen...":
             return
-        self.noteObject.spoolFan()
+        # self.noteObject.spoolFan()
         Signal.RunFFT(self.filename, self.noteObject)
 
     

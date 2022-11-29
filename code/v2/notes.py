@@ -124,9 +124,9 @@ class Notes():
 
 	
 	def spoolFan(self):
-		spooltime = 3_000
-		timer = time.time() / 1000
-		while (time.time() / 1000) - timer <= spooltime:
+		spooltime = 2 
+		timer = time.time()
+		while time.time() - timer <= spooltime:
 			self.fan.start(Notes.FAN_HIGH)
 
 		
