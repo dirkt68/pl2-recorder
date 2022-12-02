@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import filedialog as fd
 import RPi.GPIO as GPIO
+from threading import Thread
 
 # USER LIBRARIES
 from realtimeSignal import Signal
@@ -15,6 +16,9 @@ class GUI(tk.Tk):
         # extra constants
         self.filename = "None chosen..."
         self.noteObject = Notes()
+        self.exitFlag = False
+        self.pianoThread = Thread(target=playPiano)
+        self.exitThread = Thread(target=exitLoop)
 
         # window setup
         self.title("Automatic Recorder")
@@ -34,6 +38,8 @@ class GUI(tk.Tk):
         self.hardFrame.pack(fill='both', expand=True)
         self.realFrame = ttk.Frame(self.book)
         self.realFrame.pack(fill='both', expand=True)
+        self.pianoFrame = ttk.Frame(self.book)
+        self.pianoFrame.pack(fill='both', expand=True)
 
         # hard frame config
         ttk.Label(self.hardFrame, text="Hardcoded Song List", font=("", 20)).place(relx=0.5, rely=0.15, anchor="center")
@@ -52,9 +58,18 @@ class GUI(tk.Tk):
         tk.Button(self.realFrame, text="Click to Choose MP3 File", width=75, height=4,command=self.selectFile).place(relx=0.5, rely=0.475, anchor="center")
         tk.Button(self.realFrame, text="Click to Play Song", width=75, height=4,command=self.playCustomSong).place(relx=0.5, rely=0.575, anchor="center")
 
+        # piano frame config
+        ttk.Label(self.pianoFrame, text="Piano Input", font=("", 20)).place(relx=0.5, rely=0.15, anchor="center")
+        tk.Button(self.pianoFrame, text="Click to Begin Piano Input",
+                                width=75,
+                                height=4,
+                                command=lambda: self.pianoThread.run()).place(relx=0.5, rely=0.45, anchor="center")
+        tk.Button(self.pianoFrame, text="Click to Stop...", width=75, height=4, command=lambda: self.exitThread.run()).place(relx=0.50, rely=0.55, anchor="center")
+
         # add to notebook
         self.book.add(self.hardFrame, text="Hardcoded Songs")
         self.book.add(self.realFrame, text="Custom Songs")
+        self.book.add(self.pianoFrame, text="Piano Input")
         
 
     # other functions
@@ -75,10 +90,21 @@ class GUI(tk.Tk):
         # self.noteObject.spoolFan()
         Signal.RunFFT(self.filename, self.noteObject)
 
-    
+
+    def playPiano(self):
+        ports = range(midiin.getPortCount())
+        midiin.openPort(1)
+
+        while not self.exitFlag:
+            m = midiin.getMessage(250) # some timeout in ms
+            if m:
+                notesObject.playPianoNote(m)
+            else:
+                print('NO MIDI INPUT PORTS!')
 
 
-
+    def exitLoop(self):
+            exitFlag = True
 
 
 def main():

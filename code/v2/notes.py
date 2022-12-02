@@ -1,5 +1,6 @@
 import time
 import RPi.GPIO as GPIO
+import rtmidi
 
 # note setup :: note/octave = (servo0, sol1, sol2, sol3, sol4, sol5, servo6, servo7)
 # solenoids are SOL_OPEN/SOL_CLOSED, servos are SERVO_CLOSED, SERVO_HALF, SERVO_OPEN
@@ -34,9 +35,9 @@ class Notes():
 	SOL_OPEN = False
 	SOL_CLOSED = True
 
-	FAN_HIGH = 90
-	FAN_MID = 80
-	FAN_LOW = 70
+	FAN_HIGH = 95
+	FAN_MID = 85
+	FAN_LOW = 75
 
 	# notes to physical positions
 	PHYS_NOTE_DICT = {#			FAN			0			1			2			3			4			5			6				7
@@ -68,6 +69,7 @@ class Notes():
 		"C#7":	(FAN_HIGH,SERVO_0_HALF, SOL_CLOSED, SOL_OPEN, SOL_CLOSED, SOL_CLOSED, SOL_OPEN, SERVO_6_OPEN, SERVO_7_CLOSED),
 		"D7":	(FAN_HIGH,SERVO_0_HALF, SOL_CLOSED, SOL_OPEN, SOL_CLOSED, SOL_CLOSED, SOL_OPEN, SERVO_6_CLOSED, SERVO_7_OPEN),
 	}
+
 
 	def __init__(self):
 		self.GPIOInit()
@@ -137,4 +139,22 @@ class Notes():
 		while time.time() - timer <= spooltime:
 			self.fan.start(Notes.FAN_HIGH)
 
-		
+
+	def playPianoNote(self, midi):
+        note = midi.getMidiNoteName(midi.getNoteNumber())
+        if midi.isNoteOn():
+          print('ON: ',note)
+          self.fan.start(Notes.PHYS_NOTE_DICT[note][0])
+          self.servo0.start(Notes.PHYS_NOTE_DICT[note][1])
+          GPIO.output(Notes.SOL_1, Notes.PHYS_NOTE_DICT[note][2])
+          GPIO.output(Notes.SOL_2, Notes.PHYS_NOTE_DICT[note][3])
+          GPIO.output(Notes.SOL_3, Notes.PHYS_NOTE_DICT[note][4])
+          GPIO.output(Notes.SOL_4, Notes.PHYS_NOTE_DICT[note][5])
+          GPIO.output(Notes.SOL_5, Notes.PHYS_NOTE_DICT[note][6])
+          self.servo6.start(Notes.PHYS_NOTE_DICT[note][7])
+          self.servo7.start(Notes.PHYS_NOTE_DICT[note][8])
+
+        elif midi.isNoteOff():
+          print('OFF:', note)
+        
+        GPIO.output(Notes.SOL_6, Notes.SOL_CLOSED)
