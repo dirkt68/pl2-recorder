@@ -34,9 +34,9 @@ class Notes():
 	SOL_OPEN = False
 	SOL_CLOSED = True
 
-	FAN_HIGH = 65
-	FAN_MID = 55
-	FAN_LOW = 45
+	FAN_HIGH = 90
+	FAN_MID = 80
+	FAN_LOW = 70
 
 	# notes to physical positions
 	PHYS_NOTE_DICT = {#			FAN			0			1			2			3			4			5			6				7
@@ -107,7 +107,7 @@ class Notes():
 		GPIO.setup(Notes.SERVO_7, GPIO.OUT)
 		GPIO.setup(Notes.FAN, GPIO.OUT)
 
-		self.fan = GPIO.PWM(Notes.FAN, 100)
+		self.fan = GPIO.PWM(Notes.FAN, 200)
 		self.servo0 = GPIO.PWM(Notes.SERVO_0, 200)
 		self.servo6 = GPIO.PWM(Notes.SERVO_6, 200)
 		self.servo7 = GPIO.PWM(Notes.SERVO_7, 200)
@@ -132,7 +132,7 @@ class Notes():
 
 	
 	def spoolFan(self):
-		spooltime = 2 
+		spooltime = 2.5 
 		timer = time.time()
 		while time.time() - timer <= spooltime:
 			self.fan.start(Notes.FAN_HIGH)
