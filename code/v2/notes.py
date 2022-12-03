@@ -1,5 +1,6 @@
 import time
 import RPi.GPIO as GPIO
+from rpi_hardware_pwm import HardwarePWM
 import rtmidi
 
 # note setup :: note/octave = (servo0, sol1, sol2, sol3, sol4, sol5, servo6, servo7)
@@ -9,7 +10,7 @@ class Notes():
 	SERVO_0 = 36
 	SOL_1 = 3
 	SOL_2 = 5
-	SOL_3 = 7
+	SOL_3 = 8
 	SOL_4 = 11
 	SOL_5 = 13
 	SOL_6 = 15
@@ -35,30 +36,30 @@ class Notes():
 	SOL_OPEN = False
 	SOL_CLOSED = True
 
-	FAN_HIGH = 95
-	FAN_MID = 85
-	FAN_LOW = 75
+	FAN_HIGH = 90
+	FAN_MID = 80
+	FAN_LOW = 70
 
 	# notes to physical positions
 	PHYS_NOTE_DICT = {#			FAN			0			1			2			3			4			5			6				7
-		"C5":	(FAN_LOW, SERVO_0_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SERVO_6_CLOSED, SERVO_7_CLOSED),
-		"C#5":	(FAN_LOW, SERVO_0_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SERVO_6_CLOSED, SERVO_7_HALF),
-		"D5":	(FAN_LOW, SERVO_0_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SERVO_6_CLOSED, SERVO_7_OPEN),
-		"D#5":	(FAN_LOW, SERVO_0_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SERVO_6_HALF, SERVO_7_OPEN),
-		"E5":	(FAN_LOW, SERVO_0_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SERVO_6_OPEN, SERVO_7_OPEN),
-		"F5":	(FAN_LOW, SERVO_0_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_OPEN, SERVO_6_CLOSED, SERVO_7_CLOSED),
-		"F#5":	(FAN_LOW, SERVO_0_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_OPEN, SOL_CLOSED, SERVO_6_CLOSED, SERVO_7_OPEN),
-		"G5":	(FAN_LOW, SERVO_0_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_OPEN, SOL_OPEN, SERVO_6_OPEN, SERVO_7_OPEN),
-		"G#5":	(FAN_LOW, SERVO_0_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_OPEN, SOL_CLOSED, SOL_CLOSED, SERVO_6_HALF, SERVO_7_OPEN),
-		"A5":	(FAN_LOW, SERVO_0_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_OPEN, SOL_OPEN, SOL_OPEN, SERVO_6_OPEN, SERVO_7_OPEN),
-		"A#5":	(FAN_LOW, SERVO_0_CLOSED, SOL_CLOSED, SOL_OPEN, SOL_CLOSED, SOL_CLOSED, SOL_OPEN, SERVO_6_OPEN, SERVO_7_OPEN),
-		"B5":	(FAN_LOW, SERVO_0_CLOSED, SOL_CLOSED, SOL_OPEN, SOL_OPEN, SOL_OPEN, SOL_OPEN, SERVO_6_OPEN, SERVO_7_OPEN),
-		"C6":	(FAN_MID, SERVO_0_CLOSED, SOL_OPEN, SOL_CLOSED, SOL_OPEN, SOL_OPEN, SOL_OPEN, SERVO_6_OPEN, SERVO_7_OPEN),
-		"C#6":	(FAN_MID, SERVO_0_OPEN, SOL_CLOSED, SOL_CLOSED, SOL_OPEN, SOL_OPEN, SOL_OPEN, SERVO_6_OPEN, SERVO_7_OPEN),
-		"D6":	(FAN_MID, SERVO_0_OPEN, SOL_OPEN, SOL_CLOSED, SOL_OPEN, SOL_OPEN, SOL_OPEN, SERVO_6_OPEN, SERVO_7_OPEN),
-		"D#6":	(FAN_MID, SERVO_0_OPEN, SOL_OPEN, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SERVO_6_CLOSED, SERVO_7_CLOSED),
-		"E6":	(FAN_MID, SERVO_0_HALF, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SERVO_6_OPEN, SERVO_7_OPEN),
-		"F6":	(FAN_MID, SERVO_0_HALF, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_OPEN, SERVO_6_CLOSED, SERVO_7_OPEN),
+		"C5":	(FAN_HIGH, SERVO_0_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SERVO_6_CLOSED, SERVO_7_CLOSED),
+		"C#5":	(FAN_HIGH, SERVO_0_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SERVO_6_CLOSED, SERVO_7_HALF),
+		"D5":	(FAN_HIGH, SERVO_0_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SERVO_6_CLOSED, SERVO_7_OPEN),
+		"D#5":	(FAN_HIGH, SERVO_0_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SERVO_6_HALF, SERVO_7_OPEN),
+		"E5":	(FAN_HIGH, SERVO_0_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SERVO_6_OPEN, SERVO_7_OPEN),
+		"F5":	(FAN_HIGH, SERVO_0_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_OPEN, SERVO_6_CLOSED, SERVO_7_CLOSED),
+		"F#5":	(FAN_HIGH, SERVO_0_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_OPEN, SOL_CLOSED, SERVO_6_CLOSED, SERVO_7_OPEN),
+		"G5":	(FAN_HIGH, SERVO_0_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_OPEN, SOL_OPEN, SERVO_6_OPEN, SERVO_7_OPEN),
+		"G#5":	(FAN_HIGH, SERVO_0_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_OPEN, SOL_CLOSED, SOL_CLOSED, SERVO_6_HALF, SERVO_7_OPEN),
+		"A5":	(FAN_HIGH, SERVO_0_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_OPEN, SOL_OPEN, SOL_OPEN, SERVO_6_OPEN, SERVO_7_OPEN),
+		"A#5":	(FAN_HIGH, SERVO_0_CLOSED, SOL_CLOSED, SOL_OPEN, SOL_CLOSED, SOL_CLOSED, SOL_OPEN, SERVO_6_OPEN, SERVO_7_OPEN),
+		"B5":	(FAN_HIGH, SERVO_0_CLOSED, SOL_CLOSED, SOL_OPEN, SOL_OPEN, SOL_OPEN, SOL_OPEN, SERVO_6_OPEN, SERVO_7_OPEN),
+		"C6":	(FAN_HIGH, SERVO_0_CLOSED, SOL_OPEN, SOL_CLOSED, SOL_OPEN, SOL_OPEN, SOL_OPEN, SERVO_6_OPEN, SERVO_7_OPEN),
+		"C#6":	(FAN_HIGH, SERVO_0_OPEN, SOL_CLOSED, SOL_CLOSED, SOL_OPEN, SOL_OPEN, SOL_OPEN, SERVO_6_OPEN, SERVO_7_OPEN),
+		"D6":	(FAN_HIGH, SERVO_0_OPEN, SOL_OPEN, SOL_CLOSED, SOL_OPEN, SOL_OPEN, SOL_OPEN, SERVO_6_OPEN, SERVO_7_OPEN),
+		"D#6":	(FAN_HIGH, SERVO_0_OPEN, SOL_OPEN, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SERVO_6_CLOSED, SERVO_7_CLOSED),
+		"E6":	(FAN_HIGH, SERVO_0_HALF, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SERVO_6_OPEN, SERVO_7_OPEN),
+		"F6":	(FAN_HIGH, SERVO_0_HALF, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_OPEN, SERVO_6_CLOSED, SERVO_7_OPEN),
 		"F#6":	(FAN_HIGH,SERVO_0_HALF, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_OPEN, SOL_CLOSED, SERVO_6_OPEN, SERVO_7_OPEN),
 		"G6":	(FAN_HIGH,SERVO_0_HALF, SOL_CLOSED, SOL_CLOSED, SOL_CLOSED, SOL_OPEN, SOL_OPEN, SERVO_6_OPEN, SERVO_7_OPEN),
 		"G#6":	(FAN_HIGH,SERVO_0_HALF, SOL_CLOSED, SOL_CLOSED, SOL_OPEN, SOL_CLOSED, SOL_OPEN, SERVO_6_OPEN, SERVO_7_OPEN),
@@ -73,6 +74,7 @@ class Notes():
 
 	def __init__(self):
 		self.GPIOInit()
+		self.GPIOClean()
 
 
 	def playNote(self, note, length):
@@ -83,15 +85,15 @@ class Notes():
 				GPIO.output(Notes.SOL_6, Notes.SOL_OPEN)
 				continue
 
-			self.fan.start(Notes.PHYS_NOTE_DICT[note][0])
-			self.servo0.start(Notes.PHYS_NOTE_DICT[note][1])
+			self.fan.change_duty_cycle(Notes.PHYS_NOTE_DICT[note][0])
+			self.servo0.ChangeDutyCycle(Notes.PHYS_NOTE_DICT[note][1])
 			GPIO.output(Notes.SOL_1, Notes.PHYS_NOTE_DICT[note][2])
 			GPIO.output(Notes.SOL_2, Notes.PHYS_NOTE_DICT[note][3])
 			GPIO.output(Notes.SOL_3, Notes.PHYS_NOTE_DICT[note][4])
 			GPIO.output(Notes.SOL_4, Notes.PHYS_NOTE_DICT[note][5])
 			GPIO.output(Notes.SOL_5, Notes.PHYS_NOTE_DICT[note][6])
-			self.servo6.start(Notes.PHYS_NOTE_DICT[note][7])
-			self.servo7.start(Notes.PHYS_NOTE_DICT[note][8])
+			self.servo6.ChangeDutyCycle(Notes.PHYS_NOTE_DICT[note][7])
+			self.servo7.ChangeDutyCycle(Notes.PHYS_NOTE_DICT[note][8])
 
 
 	def GPIOInit(self):
@@ -107,17 +109,15 @@ class Notes():
 		GPIO.setup(Notes.SOL_6, GPIO.OUT, initial=GPIO.LOW)
 		GPIO.setup(Notes.SERVO_6, GPIO.OUT)
 		GPIO.setup(Notes.SERVO_7, GPIO.OUT)
-		GPIO.setup(Notes.FAN, GPIO.OUT)
 
-		self.fan = GPIO.PWM(Notes.FAN, 200)
+		self.fan = HardwarePWM(0, 500)
 		self.servo0 = GPIO.PWM(Notes.SERVO_0, 200)
 		self.servo6 = GPIO.PWM(Notes.SERVO_6, 200)
 		self.servo7 = GPIO.PWM(Notes.SERVO_7, 200)
 
-		self.fan.stop()
-		self.servo0.stop()
-		self.servo6.stop()
-		self.servo7.stop()
+		self.servo0.start(0)
+		self.servo6.start(0)
+		self.servo7.start(0)
 
 
 	def GPIOClean(self):
@@ -131,30 +131,32 @@ class Notes():
 		GPIO.output(Notes.SOL_6, Notes.SOL_OPEN)
 		self.servo6.stop()
 		self.servo7.stop()
+		print("cleaned")
 
 	
 	def spoolFan(self):
+		self.fan.start(Notes.FAN_HIGH)
 		spooltime = 2.5 
 		timer = time.time()
 		while time.time() - timer <= spooltime:
-			self.fan.start(Notes.FAN_HIGH)
+			continue
 
 
 	def playPianoNote(self, midi):
-        note = midi.getMidiNoteName(midi.getNoteNumber())
-        if midi.isNoteOn():
-          print('ON: ',note)
-          self.fan.start(Notes.PHYS_NOTE_DICT[note][0])
-          self.servo0.start(Notes.PHYS_NOTE_DICT[note][1])
-          GPIO.output(Notes.SOL_1, Notes.PHYS_NOTE_DICT[note][2])
-          GPIO.output(Notes.SOL_2, Notes.PHYS_NOTE_DICT[note][3])
-          GPIO.output(Notes.SOL_3, Notes.PHYS_NOTE_DICT[note][4])
-          GPIO.output(Notes.SOL_4, Notes.PHYS_NOTE_DICT[note][5])
-          GPIO.output(Notes.SOL_5, Notes.PHYS_NOTE_DICT[note][6])
-          self.servo6.start(Notes.PHYS_NOTE_DICT[note][7])
-          self.servo7.start(Notes.PHYS_NOTE_DICT[note][8])
+		note = midi.getMidiNoteName(midi.getNoteNumber())
+		if midi.isNoteOn():
+			print('ON: ',note)
+			self.fan.change_duty_cycle(Notes.PHYS_NOTE_DICT[note][0])
+			self.servo0.ChangeDutyCycle(Notes.PHYS_NOTE_DICT[note][1])
+			GPIO.output(Notes.SOL_1, Notes.PHYS_NOTE_DICT[note][2])
+			GPIO.output(Notes.SOL_2, Notes.PHYS_NOTE_DICT[note][3])
+			GPIO.output(Notes.SOL_3, Notes.PHYS_NOTE_DICT[note][4])
+			GPIO.output(Notes.SOL_4, Notes.PHYS_NOTE_DICT[note][5])
+			GPIO.output(Notes.SOL_5, Notes.PHYS_NOTE_DICT[note][6])
+			self.servo6.ChangeDutyCycle(Notes.PHYS_NOTE_DICT[note][7])
+			self.servo7.ChangeDutyCycle(Notes.PHYS_NOTE_DICT[note][8])
 
-        elif midi.isNoteOff():
-          print('OFF:', note)
+		else:
+			print('OFF:', note)
+			GPIO.output(Notes.SOL_6, Notes.SOL_CLOSED)
         
-        GPIO.output(Notes.SOL_6, Notes.SOL_CLOSED)

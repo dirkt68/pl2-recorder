@@ -3,6 +3,7 @@ from tkinter import ttk
 from tkinter import filedialog as fd
 import RPi.GPIO as GPIO
 from threading import Thread
+import rtmidi
 
 # USER LIBRARIES
 from realtimeSignal import Signal
@@ -17,8 +18,7 @@ class GUI(tk.Tk):
         self.filename = "None chosen..."
         self.noteObject = Notes()
         self.exitFlag = False
-        self.pianoThread = Thread(target=playPiano)
-        self.exitThread = Thread(target=exitLoop)
+        self.midiin = rtmidi.RtMidiIn()
 
         # window setup
         self.title("Automatic Recorder")
@@ -63,8 +63,8 @@ class GUI(tk.Tk):
         tk.Button(self.pianoFrame, text="Click to Begin Piano Input",
                                 width=75,
                                 height=4,
-                                command=lambda: self.pianoThread.run()).place(relx=0.5, rely=0.45, anchor="center")
-        tk.Button(self.pianoFrame, text="Click to Stop...", width=75, height=4, command=lambda: self.exitThread.run()).place(relx=0.50, rely=0.55, anchor="center")
+                                command=lambda: Thread(target=self.playPiano).start()).place(relx=0.5, rely=0.45, anchor="center")
+        tk.Button(self.pianoFrame, text="Click to Stop...", width=75, height=4, command=lambda: Thread(target=self.exitLoop).start()).place(relx=0.50, rely=0.55, anchor="center")
 
         # add to notebook
         self.book.add(self.hardFrame, text="Hardcoded Songs")
@@ -92,19 +92,23 @@ class GUI(tk.Tk):
 
 
     def playPiano(self):
-        ports = range(midiin.getPortCount())
-        midiin.openPort(1)
+        self.midiin.openPort(1)
+        self.noteObject.spoolFan()
 
         while not self.exitFlag:
-            m = midiin.getMessage(250) # some timeout in ms
+            m = self.midiin.getMessage(250) # some timeout in ms
             if m:
-                notesObject.playPianoNote(m)
+                self.noteObject.playPianoNote(m)
             else:
                 print('NO MIDI INPUT PORTS!')
 
+        self.exitFlag = False
+        self.noteObject.GPIOClean()
+
 
     def exitLoop(self):
-            exitFlag = True
+            self.exitFlag = True
+
 
 
 def main():
