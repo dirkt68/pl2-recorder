@@ -19,7 +19,6 @@ class Notes():
 	SERVO_7 = 40
 
 	# servos
-	# ! need to find which value corresponds to fully open/half/closed
 	SERVO_0_OPEN = 40
 	SERVO_0_HALF = 50
 	SERVO_0_CLOSED = 60
@@ -36,9 +35,9 @@ class Notes():
 	SOL_OPEN = False
 	SOL_CLOSED = True
 
-	FAN_HIGH = 90
-	FAN_MID = 80
-	FAN_LOW = 70
+	FAN_HIGH = 55
+	FAN_MID = 45
+	FAN_LOW = 35
 
 	# notes to physical positions
 	PHYS_NOTE_DICT = {#			FAN			0			1			2			3			4			5			6				7
@@ -145,7 +144,7 @@ class Notes():
 	def playPianoNote(self, midi):
 		note = midi.getMidiNoteName(midi.getNoteNumber())
 		if midi.isNoteOn():
-			print('ON: ',note)
+			# print('ON: ',note)
 			self.fan.change_duty_cycle(Notes.PHYS_NOTE_DICT[note][0])
 			self.servo0.ChangeDutyCycle(Notes.PHYS_NOTE_DICT[note][1])
 			GPIO.output(Notes.SOL_1, Notes.PHYS_NOTE_DICT[note][2])
@@ -157,6 +156,6 @@ class Notes():
 			self.servo7.ChangeDutyCycle(Notes.PHYS_NOTE_DICT[note][8])
 
 		else:
-			print('OFF:', note)
+			# print('OFF:', note)
 			GPIO.output(Notes.SOL_6, Notes.SOL_CLOSED)
         

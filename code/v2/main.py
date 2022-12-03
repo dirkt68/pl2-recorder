@@ -22,7 +22,6 @@ class GUI(tk.Tk):
 
         # window setup
         self.title("Automatic Recorder")
-        # self.state("zoomed")
         self.attributes("-fullscreen", True)
 
         # configure rows and columns for auto-scaling
@@ -99,8 +98,6 @@ class GUI(tk.Tk):
             m = self.midiin.getMessage(250) # some timeout in ms
             if m:
                 self.noteObject.playPianoNote(m)
-            else:
-                print('NO MIDI INPUT PORTS!')
 
         self.exitFlag = False
         self.noteObject.GPIOClean()
