@@ -35,9 +35,9 @@ class Notes():
 	SOL_OPEN = False
 	SOL_CLOSED = True
 
-	FAN_HIGH = 55
-	FAN_MID = 45
-	FAN_LOW = 35
+	FAN_HIGH = 70
+	FAN_MID = 60
+	FAN_LOW = 50
 
 	# notes to physical positions
 	PHYS_NOTE_DICT = {#			FAN			0			1			2			3			4			5			6				7
@@ -135,7 +135,7 @@ class Notes():
 	
 	def spoolFan(self):
 		self.fan.start(Notes.FAN_HIGH)
-		spooltime = 2.5 
+		spooltime = 3.5 
 		timer = time.time()
 		while time.time() - timer <= spooltime:
 			continue
@@ -143,7 +143,7 @@ class Notes():
 
 	def playPianoNote(self, midi):
 		note = midi.getMidiNoteName(midi.getNoteNumber())
-		if midi.isNoteOn():
+		if midi.isNoteOn() and int(note[-1]) >= 5 and int(note[-1]) < 8:
 			# print('ON: ',note)
 			self.fan.change_duty_cycle(Notes.PHYS_NOTE_DICT[note][0])
 			self.servo0.ChangeDutyCycle(Notes.PHYS_NOTE_DICT[note][1])
