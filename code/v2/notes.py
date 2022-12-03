@@ -20,17 +20,17 @@ class Notes():
 	SERVO_7 = 40
 
 	# servos
-	SERVO_0_OPEN = 0.4
-	SERVO_0_HALF = 0.5
-	SERVO_0_CLOSED = 0.6
+	SERVO_0_OPEN = -0.1
+	SERVO_0_HALF = 0
+	SERVO_0_CLOSED = 0.1
 
-	SERVO_6_OPEN = 0.6
-	SERVO_6_HALF = 0.5
-	SERVO_6_CLOSED = 0.4
+	SERVO_6_OPEN = 0.1
+	SERVO_6_HALF = 0
+	SERVO_6_CLOSED = -0.1
 
-	SERVO_7_OPEN = 0.4
-	SERVO_7_HALF = 0.5
-	SERVO_7_CLOSED = 0.6
+	SERVO_7_OPEN = -0.1
+	SERVO_7_HALF = 0
+	SERVO_7_CLOSED = 0.1
 
 	# solenoid
 	SOL_OPEN = False
@@ -141,7 +141,7 @@ class Notes():
 		if midi.isNoteOn() and int(note[-1]) >= 5 and int(note[-1]) < 8:
 			# print('ON: ',note)
 			self.fan.change_duty_cycle(Notes.PHYS_NOTE_DICT[note][0])
-			self.servo0.ChangeDutyCycle(Notes.PHYS_NOTE_DICT[note][1])
+			self.servo0.value = Notes.PHYS_NOTE_DICT[note][1]
 			GPIO.output(Notes.SOL_1, Notes.PHYS_NOTE_DICT[note][2])
 			GPIO.output(Notes.SOL_2, Notes.PHYS_NOTE_DICT[note][3])
 			GPIO.output(Notes.SOL_3, Notes.PHYS_NOTE_DICT[note][4])
