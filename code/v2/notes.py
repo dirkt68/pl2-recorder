@@ -14,7 +14,8 @@ class Notes():
 	SOL_4 = 11
 	SOL_5 = 13
 	SOL_6 = 15
-	FAN = 16
+	# FAN = 16
+	# fan is controlled by channel 0 for HardwarePWM
 	SERVO_6 = 38
 	SERVO_7 = 40
 
