@@ -1,0 +1,22 @@
+\contentsline {section}{\numberline {1}Introduction}{5}{section.1}%
+\contentsline {section}{\numberline {2}Body}{8}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Software}{8}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Flow of Control Chart}{8}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}GUI Code}{9}{subsubsection.2.1.2}%
+\contentsline {subsubsection}{\numberline {2.1.3}Notes and Fan Control}{9}{subsubsection.2.1.3}%
+\contentsline {subsubsection}{\numberline {2.1.4}Hardcoded Song Playback}{11}{subsubsection.2.1.4}%
+\contentsline {subsubsection}{\numberline {2.1.5}Custom Song Playback}{11}{subsubsection.2.1.5}%
+\contentsline {subsubsection}{\numberline {2.1.6}WAV Parsing and Processing}{14}{subsubsection.2.1.6}%
+\contentsline {subsubsection}{\numberline {2.1.7}The Fast Fourier Transform}{15}{subsubsection.2.1.7}%
+\contentsline {subsubsection}{\numberline {2.1.8}FFT Post-Processing}{18}{subsubsection.2.1.8}%
+\contentsline {subsubsection}{\numberline {2.1.9}Piano Input}{20}{subsubsection.2.1.9}%
+\contentsline {subsection}{\numberline {2.2}Hardware}{21}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}The Recorder}{21}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Airflow}{22}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Solenoids and Servos}{23}{subsubsection.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.4}Power Supply and Driver PCB}{25}{subsubsection.2.2.4}%
+\contentsline {subsubsection}{\numberline {2.2.5}Computational Power}{26}{subsubsection.2.2.5}%
+\contentsline {section}{\numberline {3}Conclusion}{26}{section.3}%
+\contentsline {section}{\numberline {4}Appendix}{27}{section.4}%
+\contentsline {subsection}{\numberline {4.1}GANTT Chart and Budget}{27}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Safety and Ethics}{28}{subsection.4.2}%

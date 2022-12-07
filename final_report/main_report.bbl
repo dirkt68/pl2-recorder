@@ -1,0 +1,213 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{rec_wiki}{online}{}
+      \list{publisher}{1}{%
+        {Wikimedia Foundation}%
+      }
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{day}{19}
+      \field{journaltitle}{Wikipedia}
+      \field{month}{10}
+      \field{title}{Recorder (musical instrument)}
+      \field{year}{2022}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://en.wikipedia.org/wiki/Recorder_(musical_instrument)#Acoustics
+      \endverb
+      \verb{url}
+      \verb https://en.wikipedia.org/wiki/Recorder_(musical_instrument)#Acoustics
+      \endverb
+    \endentry
+    \entry{ras_pi}{manual}{}
+      \list{organization}{1}{%
+        {Raspberry Pi (Trading) Ltd.}%
+      }
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{month}{6}
+      \field{title}{{Raspberry Pi 4 Model B}}
+      \field{year}{2019}
+    \endentry
+    \entry{piano}{online}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{day}{5}
+      \field{month}{12}
+      \field{title}{{MPK Mini Play MK3}}
+      \field{year}{2022}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.akaipro.com/mpk-mini-play
+      \endverb
+      \verb{url}
+      \verb https://www.akaipro.com/mpk-mini-play
+      \endverb
+    \endentry
+    \entry{ffmpeg}{online}{}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labeltitlesource}{title}
+      \field{day}{19}
+      \field{month}{10}
+      \field{title}{{ffmpeg Documentation}}
+      \field{year}{2022}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://ffmpeg.org/ffmpeg.html
+      \endverb
+      \verb{url}
+      \verb https://ffmpeg.org/ffmpeg.html
+      \endverb
+    \endentry
+    \entry{struct}{online}{}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labeltitlesource}{title}
+      \field{day}{19}
+      \field{month}{10}
+      \field{title}{{struct — Interpret bytes as packed binary data}}
+      \field{year}{2022}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://docs.python.org/3/library/struct.html
+      \endverb
+      \verb{url}
+      \verb https://docs.python.org/3/library/struct.html
+      \endverb
+    \endentry
+    \entry{wav}{online}{}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labeltitlesource}{title}
+      \field{day}{19}
+      \field{month}{10}
+      \field{title}{{What is a WAV file?}}
+      \field{year}{2022}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://docs.fileformat.com/audio/wav/
+      \endverb
+      \verb{url}
+      \verb https://docs.fileformat.com/audio/wav/
+      \endverb
+    \endentry
+    \entry{fft_wiki}{online}{}
+      \list{publisher}{1}{%
+        {Wikimedia Foundation}%
+      }
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labeltitlesource}{title}
+      \field{day}{19}
+      \field{journaltitle}{Wikipedia}
+      \field{month}{10}
+      \field{title}{{Fast Fourier transform}}
+      \field{year}{2022}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://en.wikipedia.org/wiki/Fast_Fourier_transform
+      \endverb
+      \verb{url}
+      \verb https://en.wikipedia.org/wiki/Fast_Fourier_transform
+      \endverb
+    \endentry
+    \entry{fft_paper}{report}{}
+      \name{author}{2}{}{%
+        {{hash=9a5cfe59165ea73852bf47c17612fc90}{%
+           family={Cooley},
+           familyi={C\bibinitperiod},
+           given={James\bibnamedelima W.},
+           giveni={J\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=9edab5dbc1987bcb98d6de058f00fc47}{%
+           family={Tukey},
+           familyi={T\bibinitperiod},
+           given={John\bibnamedelima W.},
+           giveni={J\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{ee74374d9504fa6fb4aa57320b0e47fc}
+      \strng{fullhash}{ee74374d9504fa6fb4aa57320b0e47fc}
+      \strng{bibnamehash}{ee74374d9504fa6fb4aa57320b0e47fc}
+      \strng{authorbibnamehash}{ee74374d9504fa6fb4aa57320b0e47fc}
+      \strng{authornamehash}{ee74374d9504fa6fb4aa57320b0e47fc}
+      \strng{authorfullhash}{ee74374d9504fa6fb4aa57320b0e47fc}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{An Algorithm for the Machine Calculation of Complex Fourier Series}}
+      \field{year}{1965}
+      \field{dateera}{ce}
+    \endentry
+    \entry{rec_info}{online}{}
+      \name{author}{1}{}{%
+        {{hash=770e3cca9580952ecc6af51966810d61}{%
+           family={Wolfe},
+           familyi={W\bibinitperiod},
+           given={Joe},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{770e3cca9580952ecc6af51966810d61}
+      \strng{fullhash}{770e3cca9580952ecc6af51966810d61}
+      \strng{bibnamehash}{770e3cca9580952ecc6af51966810d61}
+      \strng{authorbibnamehash}{770e3cca9580952ecc6af51966810d61}
+      \strng{authornamehash}{770e3cca9580952ecc6af51966810d61}
+      \strng{authorfullhash}{770e3cca9580952ecc6af51966810d61}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{24}
+      \field{month}{10}
+      \field{title}{{Air speed and blowing pressure in woodwind and brass instruments: how important are they?}}
+      \field{year}{2022}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.phys.unsw.edu.au/jw/air-speed.html
+      \endverb
+      \verb{url}
+      \verb https://www.phys.unsw.edu.au/jw/air-speed.html
+      \endverb
+    \endentry
+    \entry{fan_info}{online}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{day}{5}
+      \field{month}{12}
+      \field{title}{{SparkFun Blower - Squirrel Cage (12V)}}
+      \field{year}{2022}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.amazon.com/SparkFun-Blower-Squirrel-Cage-12V/dp/B00LPUXVWS?source=ps-sl-shoppingads-lpcontext&ref_=fplfs&psc=1&smid=AM0JQO74J587C
+      \endverb
+      \verb{url}
+      \verb https://www.amazon.com/SparkFun-Blower-Squirrel-Cage-12V/dp/B00LPUXVWS?source=ps-sl-shoppingads-lpcontext&ref_=fplfs&psc=1&smid=AM0JQO74J587C
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
