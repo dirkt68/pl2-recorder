@@ -1,6 +1,5 @@
 import time
 import RPi.GPIO as GPIO
-from gpiozero import Servo
 from rpi_hardware_pwm import HardwarePWM
 import rtmidi
 
@@ -20,17 +19,17 @@ class Notes():
 	SERVO_7 = 40
 
 	# servos
-	SERVO_0_OPEN = -0.1
-	SERVO_0_HALF = 0
-	SERVO_0_CLOSED = 0.1
+	SERVO_0_OPEN = 0.8
+	SERVO_0_HALF = 0.75
+	SERVO_0_CLOSED = 0.7
 
-	SERVO_6_OPEN = 0.1
-	SERVO_6_HALF = 0
-	SERVO_6_CLOSED = -0.1
+	SERVO_6_OPEN = 0.75
+	SERVO_6_HALF = 1
+	SERVO_6_CLOSED = 1.1
 
-	SERVO_7_OPEN = -0.1
-	SERVO_7_HALF = 0
-	SERVO_7_CLOSED = 0.1
+	SERVO_7_OPEN = 1.1
+	SERVO_7_HALF = 1
+	SERVO_7_CLOSED = 0.9
 
 	# solenoid
 	SOL_OPEN = False
@@ -86,14 +85,14 @@ class Notes():
 				continue
 
 			self.fan.change_duty_cycle(Notes.PHYS_NOTE_DICT[note][0])
-			self.servo0.value = Notes.PHYS_NOTE_DICT[note][1]
+			self.servo0.start(Notes.PHYS_NOTE_DICT[note][1])
 			GPIO.output(Notes.SOL_1, Notes.PHYS_NOTE_DICT[note][2])
 			GPIO.output(Notes.SOL_2, Notes.PHYS_NOTE_DICT[note][3])
 			GPIO.output(Notes.SOL_3, Notes.PHYS_NOTE_DICT[note][4])
 			GPIO.output(Notes.SOL_4, Notes.PHYS_NOTE_DICT[note][5])
 			GPIO.output(Notes.SOL_5, Notes.PHYS_NOTE_DICT[note][6])
-			self.servo6.value = Notes.PHYS_NOTE_DICT[note][7]
-			self.servo7.value = Notes.PHYS_NOTE_DICT[note][8]
+			self.servo6.start(Notes.PHYS_NOTE_DICT[note][7])
+			self.servo7.start(Notes.PHYS_NOTE_DICT[note][8])
 
 
 	def GPIOInit(self):
@@ -106,25 +105,28 @@ class Notes():
 		GPIO.setup(Notes.SOL_4, GPIO.OUT, initial=GPIO.LOW)
 		GPIO.setup(Notes.SOL_5, GPIO.OUT, initial=GPIO.LOW)
 		GPIO.setup(Notes.SOL_6, GPIO.OUT, initial=GPIO.LOW)
+		GPIO.setup(Notes.SERVO_0, GPIO.OUT)
+		GPIO.setup(Notes.SERVO_6, GPIO.OUT)
+		GPIO.setup(Notes.SERVO_7, GPIO.OUT)
 
 		self.fan = HardwarePWM(0, 500)
-		self.servo0 = Servo(Notes.SERVO_0)
-		self.servo6 = Servo(Notes.SERVO_6)
-		self.servo7 = Servo(Notes.SERVO_7)
+		self.servo0 = GPIO.PWM(Notes.SERVO_0,5)
+		self.servo6 = GPIO.PWM(Notes.SERVO_6,5)
+		self.servo7 = GPIO.PWM(Notes.SERVO_7,5)
 
 
 
 	def GPIOClean(self):
 		self.fan.stop()
-		self.servo0.detach()
+		self.servo0.start(0)
 		GPIO.output(Notes.SOL_1, Notes.SOL_OPEN)
 		GPIO.output(Notes.SOL_2, Notes.SOL_OPEN)
 		GPIO.output(Notes.SOL_3, Notes.SOL_OPEN)
 		GPIO.output(Notes.SOL_4, Notes.SOL_OPEN)
 		GPIO.output(Notes.SOL_5, Notes.SOL_OPEN)
 		GPIO.output(Notes.SOL_6, Notes.SOL_OPEN)
-		self.servo6.detach()
-		self.servo7.detach()
+		self.servo6.start(0)
+		self.servo7.start(0)
 		print("cleaned")
 
 	
@@ -141,14 +143,14 @@ class Notes():
 		if midi.isNoteOn() and int(note[-1]) >= 5 and int(note[-1]) < 8:
 			# print('ON: ',note)
 			self.fan.change_duty_cycle(Notes.PHYS_NOTE_DICT[note][0])
-			self.servo0.value = Notes.PHYS_NOTE_DICT[note][1]
+			self.servo0.start(Notes.PHYS_NOTE_DICT[note][1])
 			GPIO.output(Notes.SOL_1, Notes.PHYS_NOTE_DICT[note][2])
 			GPIO.output(Notes.SOL_2, Notes.PHYS_NOTE_DICT[note][3])
 			GPIO.output(Notes.SOL_3, Notes.PHYS_NOTE_DICT[note][4])
 			GPIO.output(Notes.SOL_4, Notes.PHYS_NOTE_DICT[note][5])
 			GPIO.output(Notes.SOL_5, Notes.PHYS_NOTE_DICT[note][6])
-			self.servo6.value = Notes.PHYS_NOTE_DICT[note][7]
-			self.servo7.value = Notes.PHYS_NOTE_DICT[note][8]
+			self.servo6.start(Notes.PHYS_NOTE_DICT[note][7])
+			self.servo7.start(Notes.PHYS_NOTE_DICT[note][8])
 
 		else:
 			# print('OFF:', note)
